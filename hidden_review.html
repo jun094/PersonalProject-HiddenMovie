@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+  <title>Hidden review</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 나눔스퀘어;
+    }
+
+    nav{
+      z-index: 1;
+      background-color : #09131f;
+      position : fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:80px;
+      padding:10px 100px;
+      box-sizing: border-box;
+      transition: .5s;
+    }
+    nav .logo {
+
+      margin-left: -60px;
+      float: left;
+    }
+
+    nav .logo img {
+
+      margin: 10px;
+      height: 35px;
+      transition: .5s;
+    }
+
+    nav ul {
+
+      float: right;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    nav ul.active {
+      display: block;
+    }
+
+    nav ul li {
+      list-style: none;
+    }
+
+    nav ul li a {
+      line-height: 60px;
+      color: #f2ebf5;
+      padding: 5px 20px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: .5s;
+      font-family: 배달의민족 도현;
+    }
+
+    nav ul li a.active,
+    nav ul li a:hover {
+      background: #f00;
+      color: #fff;
+    }
+
+    .responsive-bar {
+      display: none;
+    }
+
+    @media(max-width:930px) {
+
+      .responsive-bar {
+        /* 930이하이면 새로운 nav바 생성 */
+        display: block;
+        width: 100%;
+        height: 60px;
+        background: #09131f;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 5px 20px;
+        /* 메뉴 공간 밑에 컨텐츠 보이게 하는것 */
+        box-sizing: border-box;
+        z-index: 1;
+      }
+      .responsive-bar .logo img {
+        margin: 10px;
+        float: left;
+        width:30%;
+      }
+       .responsive-bar .menu h3{
+        font-family: 배달의민족 도현;
+        float: right;
+        color: #f2ebf5;
+        margin: 0;
+        padding: 0;
+        line-height: 50px;
+        cursor: pointer;
+        /* 마우스 갖다되면 포인터 생김 */
+        text-transform: uppercase;
+      }
+      nav .logo_ {
+        display: none;
+      }
+      nav ul {
+
+        position: absolute;
+        width: 100%;
+        top: 60px;
+        background-color: #09131f;
+        float: none;
+        display: none;
+        left: 0;
+      }
+      nav ul li {
+        width: 100%;
+      }
+      nav ul li a {
+        display: block;
+        padding: 0;
+        width: 100%;
+        text-align: center;
+        line-height: 30px;
+        color: #fff;
+      }
+    }
+
+    /* 여기까지 상단에 메뉴 창 */
+
+    /* 추천리뷰  */
+
+    .sec_container {
+      width: 100%;
+    }
+
+    .imagebox {
+      width: 100%;
+      height: 80vh;
+      position: relative;
+      top:70px;
+      overflow: hidden;
+    }
+    .imagebox:hover .textbox {
+      left: 0%;
+    }
+    .imagebox img {
+
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+    }
+
+    .textbox {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, .6);
+      transition: .5s;
+      overflow: auto;
+    }
+
+    .textbox_content {
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: 30%;
+      left: 30%;
+      transform: translateX(-30%) translateY(-15%);
+      color: #fff;
+      font-family: arial;
+    }
+
+
+
+    /* 한줄리뷰들 */
+
+    .review_section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 6% 2%;
+    }
+
+    .review_grid {
+      margin: 20px 0 0 0;
+      padding: 0;
+      list-style: none;
+      display: block;
+      text-align: center;
+      width: 100%;
+    }
+
+    .review_grid:after {
+      clear: both;
+    }
+
+    .review_grid:after,
+    .review_box:before {
+      content: "";
+      display: table;
+    }
+
+    .review_grid li {
+      width: 328px;
+      height: 328px;
+      display: inline-block;
+      margin: 20px;
+    }
+
+    .review_box {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+
+    .review_box :hover {
+      transform: scale(1.05);
+    }
+
+    .review_img_1 {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)),
+      url(review2.jpg);
+      background-size: cover;
+    }
+
+    .review_img_2 {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)),
+      url(review3.jpg);
+      background-size: cover;
+    }
+
+    .review_img_3 {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)),
+      url(review4.jpg);
+      background-size: cover;
+    }
+
+    .review_img_4 {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)),
+      url(review5.jpg);
+      background-size: cover;
+    }
+
+   .review_content1{
+      position: absolute;
+      left:20%;
+      top:-5%;
+      width: inherit;
+      height: inherit;
+    }
+    .review_content2{
+       position: absolute;
+       left:10%;
+       top:-5%;
+       width: inherit;
+       height: inherit;
+     }
+     .review_content3{
+        position: absolute;
+        left:7%;
+        top:-5%;
+        width: inherit;
+        height: inherit;
+      }
+      .review_content4{
+         position: absolute;
+         left:15%;
+         top:-5%;
+         width: inherit;
+         height: inherit;
+       }
+
+    .review_grid h4 {
+      font-family: '배달의민족 도현';
+      font-weight: 400;
+      color: #fff;
+      font-size: 38px;
+      margin: 0 30px;
+      padding: 100px 0 0 0;
+      line-height: 1.5;
+    }
+
+    .review_grid p {
+      font-family: '배달의민족 도현';
+      color: #fff;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".menu h3").click(function() {
+        $("nav ul").toggleClass("active")
+      })
+    })
+  </script>
+</head>
+
+<body>
+  <div class="responsive-bar">
+    <!-- 750이하일때 생기는 것들 -->
+    <div class="logo">
+      <a href="hidden_movie.html"><img src="hidden_logo.png" /></a>
+      <!-- 로고 클릭하면 메인 home 페이지로 이동 -->
+    </div>
+    <div class="menu">
+      <h3>menu</h3>
+    </div>
+</div>
+  <nav>
+    <div class="logo">
+      <a href="hidden_movie.html"><img src="hidden_logo.png" /></a>
+      <!-- 로고 클릭하면 메인 home 페이지로 이동 -->
+    </div>
+    <ul>
+      <li><a href='hidden_movie.html' >Home</a></li>
+      <li><a href='hidden_review.html' class="active">REVIEW</a></li>
+      <li><a href='hidden_recommend.html'>recommend</a></li>
+      <li><a href='hidden_contact.html' >Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="sec_container">
+    <div class="imagebox">
+      <img src="review1.jpg" />
+        <div class="textbox">
+          <div class="textbox_content">
+
+          <h3>오늘의 Hidden Review</h3>
+          <h4>덩 게르크 : 실화이기에 더욱 알고 싶은 영화속 의미들</h4>
+          <p>
+            예매율 80.13% | 개봉 8일째 <br /> 액션 | 2시간 38분 | 15세관람가
+          </p>
+          <p>
+            영화는 세계2차대전에 프랑스 해변도시 덩케르크에서 벌어진 다이나모 작전을 바탕으로 하고 있다. 다이나모 작전은 당시 독일군의 공세에 몰려 덩케르크 해변에 갇힌 영국 연합군의 탈출작전으로 실제 있었던 작전의 이름이다. 영화 내 디테일한 사건 모두가 사실은 아니겠지만 실화를 기반에 둔 영화라서 그런지 긴장감과 감동이 훨씬 더 크게 다가온다. 거기다가 영화는 이 작전 당시 덩케르크에서 벌어졌을 만한 일들을 굉장히 사실적으로 그려낸다. 해변에 갇혀 독일군에게
+            속수무책으로 당하는 병사의 모습과 그들의 감정상태, 영국군의 스핏파이어 전투의 모습과 전투장면. 이 영화는 스토리부터 어느 것 하나 사실적이지 않은 것이 없는 영화이다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="review_section">
+    <span></span>
+    <h2>Hidden's 한줄 리뷰</h2>
+    <ul class="review_grid">
+      <li>
+        <div class="review_box review_img_1">
+          <a href="#">
+            <div class="review_content1">
+              <h4>겟아웃</h4>
+              <p>영화 한편에 미국 인종주의의 <br /> 현실이 모두 담겨있다.</p>
+            </div>
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="review_box review_img_2">
+          <a href="#">
+            <div class="review_content2">
+              <h4>인셉션</h4>
+              <p>코브의 토템은 팽이가 아니라 반지이다 !</p>
+            </div>
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="review_box review_img_3">
+          <a href="#">
+            <div class="review_content3">
+              <h4>코코</h4>
+              <p>어른이가 찾는 어린이 영화의 숨은 의미들</p>
+            </div>
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="review_box review_img_4">
+          <a href="#">
+            <div class="review_content4">
+              <h4>노인을위한<br />나라는없다</h4>
+              <p>마냥 잔인? 피속의 숨겨진 의미들</p>
+            </div>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</body>
+
+</html>

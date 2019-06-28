@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <title>Hidden recommend</title>
+    <style>
+    body{
+      margin : 0;
+      padding: 0;
+      font-family:나눔스퀘어;
+    }
+    nav{
+      z-index: 1;
+      position: fixed;
+      background-color : #09131f;
+      position : fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:80px;
+      padding:10px 100px;
+      box-sizing: border-box;
+      transition: .5s;
+    }
+
+    nav .logo{
+      margin-left:-60px;
+      float:left;
+    }
+    nav .logo img{
+      margin:10px;
+      height: 35px;
+      transition : .5s;
+    }
+    nav ul{
+      float : right;
+      margin : 0;
+      padding : 0;
+      display:flex;
+    }
+    nav ul.active{
+      display:block;
+    }
+    nav ul li{
+      list-style:none;
+    }
+    nav ul li a{
+      line-height:60px;
+      color: #f2ebf5;
+      padding : 5px 20px;
+      text-decoration:none;
+      text-transform:uppercase;
+      transition:.5s;
+      font-family: 배달의민족 도현;
+    }
+
+    nav ul li a.active,
+    nav ul li a:hover{
+      background:#f00;
+      color:#fff;
+    }
+    .responsive-bar{
+      display:none;
+    }
+    @media(max-width:930px) {
+
+      .responsive-bar {
+        /* 930이하이면 새로운 nav바 생성 */
+        display: block;
+        width: 100%;
+        height: 60px;
+        background: #09131f;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 5px 20px;
+        /* 메뉴 공간 밑에 컨텐츠 보이게 하는것 */
+        box-sizing: border-box;
+        z-index: 1;
+      }
+      .responsive-bar .logo img {
+        margin: 10px;
+        float: left;
+        width:30%;
+      }
+       .responsive-bar .menu h3{
+        font-family: 배달의민족 도현;
+        float: right;
+        color: #f2ebf5;
+        margin: 0;
+        padding: 0;
+        line-height: 50px;
+        cursor: pointer;
+        /* 마우스 갖다되면 포인터 생김 */
+        text-transform: uppercase;
+      }
+      nav .logo_ {
+        display: none;
+      }
+      nav ul {
+
+        position: absolute;
+        width: 100%;
+        top: 60px;
+        background-color: #09131f;
+        float: none;
+        display: none;
+        left: 0;
+      }
+      nav ul li {
+        width: 100%;
+      }
+      nav ul li a {
+        display: block;
+        padding: 0;
+        width: 100%;
+        text-align: center;
+        line-height: 30px;
+        color: #fff;
+      }
+    }
+    /* 여기까지 상단에 메뉴 창 */
+
+
+    section.sec1{
+      width:100%;
+      height:80vh;
+      background: url(bg3.jpg);
+      background-size:cover;
+    }
+    section.sec1_content{
+      color:white;
+      position: absolute;
+      float : left;
+      left:10%;
+      bottom:20%;
+      font-family: 나눔스퀘어;
+      font-size: 1em;
+    }
+
+    section.content {
+      /* background-color : #09131f; */
+      color : #09131f;
+      font-family: 나눔스퀘어;
+      padding-left:6em;
+      padding-top: 2em;
+
+    }
+    section.content strong{
+      font-size:1.6em;
+    }
+    section.content h1{
+      text-align: center;
+      margin:0;
+      padding:1em;
+      font-size:3em;
+    }
+    section.content p{
+      text-align: center;
+      margin:20px 0 0;
+      padding:1em;
+      font-size:1.2em;
+    }
+
+
+    /* 여기서부터 영화 추천작 이미지 */
+    section.sec2{
+      width:100%;
+      height:120vh;
+      padding-top : 0.5em;
+      padding-left: 1%;
+    }
+    .recom{
+      margin-left: 3%;
+      margin-right: 3%;
+      width:100%;
+      height:60vh;
+      position:relative;
+    }
+    .container{
+      display: inline-block;
+      position: relative;
+      padding-left:3em;
+      padding-top: 2em;
+      width: 25%;
+      height:80%;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .container img{
+      width:80%;
+      height: 100%;
+      transition: all 0.7s ease-in;
+    }
+    .container:hover img{
+      transform : scale(1.2);
+      transition: all 0.7s ease-in;
+      filter: brightness(.5);
+    }
+    .container span{
+      position:absolute;
+      color:#fff;
+      width:50%;
+      height:50%;
+      left:-30%;
+      bottom:30%;
+      margin:2px;
+      font-family: 나눔스퀘어;
+      padding: 3px 0px;
+      font-size:0.3em;
+      transition: all 0.7s ease-in;
+
+    }
+    .container:hover span{
+      width:80%;
+      height:50%;
+      transform: translateY(20%);
+      transform: translateX(60%);
+      font-size:80%;
+      opacity:  1;
+      transition: all 0.7s ease-in;
+
+    }
+
+    </style>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $(".menu h3").click(function(){
+          $("nav ul").toggleClass("active")
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <div class="responsive-bar">
+      <!-- 750이하일때 생기는 것들 -->
+      <div class="logo">
+        <a href="hidden_movie.html"><img src="hidden_logo.png" /></a>
+        <!-- 로고 클릭하면 메인 home 페이지로 이동 -->
+      </div>
+      <div class="menu">
+        <h3>menu</h3>
+      </div>
+    </div>
+    <nav>
+      <div class="logo">
+        <a href="hidden_movie.html"><img src="hidden_logo.png" /></a>
+        <!-- 로고 클릭하면 메인 home 페이지로 이동 -->
+      </div>
+      <ul >
+        <li><a href='hidden_movie.html' >Home</a></li>
+        <li><a href='hidden_review.html'>REVIEW</a></li>
+        <li><a href='hidden_recommend.html'  class="active">recommend</a></li>
+        <li><a href='hidden_contact.html' >Contact</a></li>
+      </ul >
+    </nav>
+
+
+    <section class="sec1"></section>
+    <section class="sec1_content">
+      <h2>오늘의 추천작</h2>
+      <h3>어벤져스 : 인피니트 워</h3>
+      <p>
+        예매율 80.13% | 개봉 8일째 <br />
+        액션 | 2시간 38분 | 15세관람가
+      </p>
+    </section>
+    <section class="content">
+      <h3>Hidden Movie 추천작</h3>
+    </section>
+
+
+    <section class="sec2">
+      <div class="recom">
+        <div class="container">
+            <img src="rec1.jpg" alt="" />
+            <span><h3>평점 | 4.2</h3><br />
+              예매율 40.63% | 개봉 4일째 <br />
+              느와르 | 1시간 42분 | 12세관람가
+            </span>
+        </div>
+        <div class="container">
+            <img src="rec2.jpg" alt="" />
+            <span><h3>평점 | 3.9</h3><br />
+              예매율 20.01% | 개봉 2일째 <br />
+              액션 | 2시간 02분 | 19세관람가
+            </span>
+        </div>
+        <div class="container">
+            <img src="rec3.jpg" alt="" />
+            <span><h3>평점 | 3.5</h3><br />
+              예매율 12.09% | 개봉 10일째 <br />
+              코미디 | 1시간 56분 | 12세관람가
+            </span>
+        </div>
+        <div class="container">
+            <img src="rec4.jpg" alt="" />
+            <span><h3>평점 | 3.8</h3><br />
+              예매율 8.02% | 개봉 10일째 <br />
+              코미디 | 1시간 37분 | 12세관람가
+            </span>
+          </div>
+        <div class="container">
+            <img src="rec5.jpg" alt="" />
+            <span><h3>평점 | 3.4</h3><br />
+              예매율 5.34% | 개봉 15일째 <br />
+              애니메이션 | 1시간 50분 | 전체관람가
+            </span>
+        </div>
+        <div class="container">
+            <img src="rec6.jpg" alt="" />
+            <span><h3>평점 | 4.2</h3><br />
+              예매율 4.77% | 개봉 15일째 <br />
+              드라마 | 1시간 35분 | 15세관람가
+            </span>
+        </div>
+      </div>
+
+    </section>
+
+  </body>
+</html>

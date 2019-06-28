@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <title>Hidden Movie</title>
+
+    <style>
+      body{
+        margin : 0;
+        padding: 0;
+        font-family:나눔스퀘어;
+      }
+      nav{
+        z-index: 1;
+        background-color : #09131f;
+        position : fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:80px;
+        padding:10px 100px;
+        box-sizing: border-box;
+        transition: .5s;
+      }
+
+      nav .logo{
+        margin-left:-60px;
+        float:left;
+      }
+      nav .logo img{
+        margin:10px;
+        height: 35px;
+        transition : .5s;
+      }
+      nav ul{
+        float : right;
+        margin : 0;
+        padding : 0;
+        display:flex;
+      }
+      nav ul.active{
+        display:block;
+      }
+      nav ul li{
+        list-style:none;
+      }
+      nav ul li a{
+        line-height:60px;
+        color: #f2ebf5;
+        padding : 5px 20px;
+        text-decoration:none;
+        text-transform:uppercase;
+        transition:.5s;
+        font-family: 배달의민족 도현;
+      }
+
+      nav ul li a.active,
+      nav ul li a:hover{
+        background:#f00;
+        color:#fff;
+      }
+      section.sec1{
+        width:100%;
+        height:100vh;
+        background: url(bg1.jpg);
+        background-size:cover;
+      }
+      section.sec2{
+        width:100%;
+        height:100vh;
+        background: url(bg2.jpg);
+        background-size:cover;
+      }
+      section.sec3{
+        width:100%;
+        height:100vh;
+        background: url(bg3.jpg);
+        background-size:cover;
+      }
+      section.content {
+        background-color : #09131f;
+        color : white;
+        font-family: 나눔스퀘어;
+        padding-top: 4em;
+        padding-bottom: 4em;
+      }
+      section.content strong{
+        font-size:1.6em;
+      }
+      section.content h1{
+        text-align: center;
+        margin:0;
+        padding:1em;
+        font-size:3em;
+      }
+      section.content p{
+        text-align: center;
+        margin:20px 0 0;
+        padding:1em;
+        font-size:1.2em;
+      }
+      .responsive-bar{
+        display:none;
+      }
+      @media(max-width:930px) {
+
+        .responsive-bar {
+          /* 930이하이면 새로운 nav바 생성 */
+          display: block;
+          width: 100%;
+          height: 60px;
+          background: #09131f;
+          position: fixed;
+          top: 0;
+          left: 0;
+          padding: 5px 20px;
+          /* 메뉴 공간 밑에 컨텐츠 보이게 하는것 */
+          box-sizing: border-box;
+          z-index: 1;
+        }
+        .responsive-bar .logo img {
+          margin: 10px;
+          float: left;
+          width:30%;
+        }
+         .responsive-bar .menu h3{
+          font-family: 배달의민족 도현;
+          float: right;
+          color: #f2ebf5;
+          margin: 0;
+          padding: 0;
+          line-height: 50px;
+          cursor: pointer;
+          /* 마우스 갖다되면 포인터 생김 */
+          text-transform: uppercase;
+        }
+        nav .logo_ {
+          display: none;
+        }
+        nav ul {
+
+          position: absolute;
+          width: 100%;
+          top: 60px;
+          background-color: #09131f;
+          float: none;
+          display: none;
+          left: 0;
+        }
+        nav ul li {
+          width: 100%;
+        }
+        nav ul li a {
+          display: block;
+          padding: 0;
+          width: 100%;
+          text-align: center;
+          line-height: 30px;
+          color: #fff;
+        }
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $(".menu h3").click(function(){
+          $("nav ul").toggleClass("active")
+        })
+      })
+    </script>
+
+  </head>
+  <body>
+    <div class="responsive-bar">
+      <!-- 750이하일때 생기는 것들 -->
+      <div class="logo">
+        <a href="https://www.naver.com"><img src="hidden_logo.png" /></a>
+        <!-- 로고 클릭하면 메인 home 페이지로 이동 -->
+      </div>
+      <div class="menu">
+        <h3>menu</h3>
+      </div>
+    </div>
+    <nav>
+      <div class="logo">
+        <a href="hidden_movie.html"><img src="hidden_logo.png" /></a>
+        <!-- 로고 클릭하면 메인 home 페이지로 이동 -->
+      </div>
+      <ul >
+        <li><a href='hidden_movie.html' class="active">Home</a></li>
+        <li><a href='hidden_review.html'>REVIEW</a></li>
+        <li><a href='hidden_recommend.html'>recommend</a></li>
+        <li><a href='hidden_contact.html'>Contact</a></li>
+      </ul >
+    </nav>
+
+    <section class="sec1"></section>
+    <section class="content">
+      <h1> "오늘 내가 본 영화의 모든 것을 알고 눕자"</h1>
+      <p>
+        당신이 무심코 지나간 영화의 한 장면에는 많은 것이 담겨져 있으니, <br /><br />
+        나만 <strong>모르지</strong>말고, 너도 <strong>알자</strong>
+      </p>
+    </section>
+    <section class="sec2"></section>
+      <section class="content">
+        <h1>
+          "나만 알고 있던 영화의 해석, 공유해보자"
+        </h1>
+        <p>
+          Hidden Movie만의 커뮤니티를 통해 나만 알고 있던 영화의 해석, <br /><br />
+          함께 공유해 <strong>맞는지</strong> 또는 <strong>틀렸는지</strong> 확인해보자.
+        </p>
+      </section>
+    <section class="sec3"></section>
+
+  </body>
+</html>
